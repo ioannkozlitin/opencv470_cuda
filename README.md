@@ -16,7 +16,7 @@
     sudo apt install libcudnn8-dev
     sudo apt install libcudnn8-samples
 
-Теперь надо строить пути (написано для версии 11.8)
+Теперь надо настроить пути (написано для версии 11.8)
 
     export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
