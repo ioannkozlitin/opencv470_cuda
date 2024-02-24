@@ -12,17 +12,17 @@
     sudo apt install cuda-toolkit
     sudo apt install cuda
 
-А теперь cudnn8 (с 9 на данный момент не собирается)
-
-    sudo apt install libcudnn8
-    sudo apt install libcudnn8-dev
-    sudo apt install libcudnn8-samples
-
 Теперь надо настроить пути (написано для версии 12.3)
 
     export PATH=/usr/local/cuda-12.3/bin${PATH:+:${PATH}}
     export LD_LIBRARY_PATH=/usr/local/cuda-12.3/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
     source ~/.bashrc
+
+А теперь cudnn8 (с 9 на данный момент не собирается)
+
+    sudo apt install libcudnn8
+    sudo apt install libcudnn8-dev
+    sudo apt install libcudnn8-samples
 
 ## Сборка
 
