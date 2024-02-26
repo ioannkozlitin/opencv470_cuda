@@ -37,6 +37,41 @@
 
     sudo make install
 
+## Внешние интернет-зависимости
+
+Было замечено, что при запуске cmake скачивается два архива:
+
+```
+-- IPPICV: Downloading ippicv_2020_lnx_intel64_20191018_general.tgz from https://raw.githubusercontent.com/opencv/opencv_3rdparty/a56b6ac6f030c312b2dce17430eef13aed9af274/ippicv/ippicv_2020_lnx_intel64_20191018_general.tgz
+-- ADE: Downloading v0.1.2a.zip from https://github.com/opencv/ade/archive/v0.1.2a.zip
+```
+
+Мне же хотелось сделать сборку полностью автономной и не зависящей от наличия соединения с интернетом. Поэтому эти два архива были скачаны заранее и соответствующим образом подправлен cmake-файл opencv-4.7.0/3rdparty/ippicv/ippicv.cmake:
+
+```
+                URL
+                  "${OPENCV_IPPICV_URL}"
+                  "$ENV{OPENCV_IPPICV_URL}"
+-                 "https://raw.githubusercontent.com/opencv/opencv_3rdparty/${IPPICV_COMMIT}/ippicv/"
++                 "${CMAKE_BINARY_DIR}/.."
+                DESTINATION_DIR "${THE_ROOT}"
+                ID IPPICV
+                STATUS res
+```
+
+Похожим образом был исправлен и другой скрипт opencv-4.7.0/modules/gapi/cmake/DownloadADE.cmake:
+
+```
+              URL
+                "${OPENCV_ADE_URL}"
+                "$ENV{OPENCV_ADE_URL}"
+-               "https://github.com/opencv/ade/archive/"
++               "${CMAKE_BINARY_DIR}/.."
+              DESTINATION_DIR ${ade_src_dir}
+              ID ADE
+              STATUS res
+```
+
 ## Как получен этот репозиторий
 
 - Берем релиз OpenCV 4.7.0 с официального сайт
@@ -66,4 +101,6 @@ Explanation:
 Since both variables, weight and nms_iou_threshold, are templated and finally boil down to a primitive type during compilation, it is meaningful to use a static_cast to convert the respective constant (1.0 (by default double) and 0 (by default int)) to the template type. Based on the operator candidates the required types should all be compatible, i.e., the constant values are safe to be casted to the target template type.
 
 ```
+
+Затем я выкачал два архива интернет-зависимостей и поправил скрипты сборки, о чем написано выше.
 
