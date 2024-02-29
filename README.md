@@ -101,7 +101,7 @@ Explanation:
 Since both variables, weight and nms_iou_threshold, are templated and finally boil down to a primitive type during compilation, it is meaningful to use a static_cast to convert the respective constant (1.0 (by default double) and 0 (by default int)) to the template type. Based on the operator candidates the required types should all be compatible, i.e., the constant values are safe to be casted to the target template type.
 
 ```
-Заметим, что на более старой cuda эти исправления приводят к ошибке. 
+Заметим, что на более старой cuda эти исправления приводят к ошибке. В этом случае надо переключиться на ветку oldcuda без этих исправлений. 
 
 - Выкачал два архива интернет-зависимостей и поправил скрипты сборки, о чем написано выше.
 
