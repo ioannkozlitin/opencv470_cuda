@@ -26,11 +26,28 @@
 
 ## Сборка
 
+Пакеты с "cud" в названии:
+
+```
+cudaarithm
+cudabgsegm
+cudacodec
+cudafeatures2d
+cudafilters
+cudaimgproc
+cudalegacy
+cudaobjdetect
+cudaoptflow
+cudastereo
+cudawarping
+cudev
+```
+
 Внутри папки opencv-4.7.0
 
     mkdir build
     cd build
-    cmake -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DWITH_CUDNN=ON -DOPENCV_DNN_CUDA=ON .. -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/cudev
+    cmake -DBUILD_EXAMPLES=ON -DWITH_CUDA=ON -DWITH_CUDNN=ON -DOPENCV_DNN_CUDA=ON .. -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules/cudev\;../../opencv_contrib/modules/cudaarithm\;../../opencv_contrib/modules/cudaimgproc\;../../opencv_contrib/modules/cudawarping
     make -j$(nproc)
 
 Установка в систему
