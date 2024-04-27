@@ -7,7 +7,7 @@ ocv_download(FILENAME ${ade_filename}
              URL
                "${OPENCV_ADE_URL}"
                "$ENV{OPENCV_ADE_URL}"
-               "https://github.com/opencv/ade/archive/"
+               "file:///${CMAKE_BINARY_DIR}/../../"
              DESTINATION_DIR ${ade_src_dir}
              ID ADE
              STATUS res
