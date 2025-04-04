@@ -4,7 +4,11 @@
 
 ## Настройка окружения
 
-Необходимо сперва установить cuda12
+Сперва надо установить ряд пакетов. Без этого сборка может пройти нормально, но не будет, например, работать декодирование видео. Вот здесь описана [сборка OpenCV 4.5.0 под ubuntu 20.04](https://www.samontab.com/web/2020/11/installing-opencv-4-5-0-in-ubuntu-20-04-lts/). Под другими версиями ОС сборка может отличаться, но суть остается той же. Итак, перед установкой надо выполнить команду
+
+    sudo apt-get install build-essential cmake python3-numpy python3-dev python3-tk libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libavresample-dev libdc1394-dev libeigen3-dev libgtk-3-dev libvtk7-qt-dev
+
+Далее надо установить cuda12
 
     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2004/x86_64/cuda-keyring_1.1-1_all.deb
     sudo dpkg -i cuda-keyring_1.1-1_all.deb
